@@ -16,9 +16,35 @@ const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 // In case I want to switch to a different format:
 const weekdays2 = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 // Check if weekdays are correctly displayed
-console.log(weekdays);
+//console.log(weekdays);
 // check if API is correctly imported
-console.log(API)
+//console.log(API)
+
+async function getweatherData(city) {
+    const theNameOfTheCity = city || "Bujumbura";
+    try { const response = await fetch("http://api.weatherapi.com/v1/forecast.json?key=" + API.key + 
+    "&q=" + berlin + "&days=7&aqi=no&alerts=no")
+        
+    if (!response.ok) {
+        throw new Error(`Failed to fetch weather data. Status: ${response.status}`);
+      }
+    
+    const data = await response.json();
+           console.log(data)
+        
+
+    } catch (error) {
+        console.error("Hey are you sure you are not holding up your map upside down?");
+        return alert ("Error has been found")
+        
+    }
+}
+getweatherData();
+
+
+
+
+
 
 // add eventlistener to input field
 inputField.addEventListener('keyup', function(event) {
@@ -48,6 +74,7 @@ inputField.addEventListener('keyup', function(event) {
                 // stop the event from continuing the code if there is an error
                 return alert("Hey are you sure you are not holding up your map upside down?")
                 console.log("check if code stops")
+                // ---------------------------------
             } else {
                 // continue with the code if there are no errors
                 const container = document.querySelector(".container");
@@ -160,6 +187,13 @@ inputField.addEventListener('keyup', function(event) {
     }
 })
 
+
+
+
+
+
+
+
 // add eventlistener to button
 button.addEventListener('click', function() {
     const theNameOfTheCity = document.querySelector("#cityName").value;
@@ -263,6 +297,24 @@ button.addEventListener('click', function() {
     })
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // This is a weather web application made for educational purposes. Please do not commercialize this project in any way whatsoever.
 // Made by a BeCode technical coach whom had a lot of fun making "bad code", and improved by the very learners of this class.
 // I want to mention that this is a fully working app, but can be optimized by: 
@@ -271,4 +323,4 @@ button.addEventListener('click', function() {
 // renaming the variables, 
 // removing redundant code,
 // removing unnecessary comments,
-// storing information into variables for easier and more readable use 
+// storing information into variables for easier and more readable use
